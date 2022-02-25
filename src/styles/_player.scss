@@ -1,0 +1,25 @@
+.player-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.player-timer {
+  width: 50%;
+  display: flex;
+  gap: 1rem;
+
+  input {
+    width: 100%;
+    padding: 1rem 0;
+  }
+  p {
+    padding: 1rem 0;
+  }
+}
+.player-controller {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
