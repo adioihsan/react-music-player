@@ -5,18 +5,14 @@
   gap: 1rem;
   background-color: snow;
   align-items: center;
-  justify-content: space-center;
+  justify-content: center;
 }
 .album-cover {
-  width: 25rem;
-  height: 25rem;
+  width: 20%;
   border-radius: 50%;
-  background-image: url("../images/album-cover.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin-bottom: 2rem;
 }
-.spin-album-cover {
+.album-cover.spin {
   animation-name: spin;
   animation-duration: 10s;
   animation-iteration-count: infinite;
