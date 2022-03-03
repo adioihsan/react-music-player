@@ -3,10 +3,33 @@
   padding: 0;
   box-sizing: border-box;
 }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 168, 168, 0.5) transparent;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(168, 168, 168, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: Karla, sans-serif;
   background-color: snow;
 }
 
 @import "./song";
 @import "./player";
+@import "./library";
+
+@font-face {
+  font-family: Karla;
+  src: url("../fonts/Karla-VariableFont_wght.ttf");
+}

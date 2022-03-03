@@ -6,25 +6,26 @@
   background-color: snow;
   align-items: center;
   justify-content: center;
-}
-.album-cover {
-  width: 20%;
-  border-radius: 50%;
-  margin-bottom: 2rem;
-}
-.album-cover.spin {
-  animation-name: spin;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-.song-title {
-  font-size: 2rem;
-  font-weight: 500;
-}
-.song-artist {
-  font-size: 1rem;
-  font-weight: 300;
+
+  .album-cover {
+    width: 20%;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+  }
+  .album-cover.spin {
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  .song-title {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .song-artist {
+    font-size: 1rem;
+    font-weight: 300;
+  }
 }
 
 // spin around album cover

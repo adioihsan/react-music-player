@@ -1,0 +1,40 @@
+.library-container {
+  width: 20rem;
+  height: 100%;
+  background-color: snow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  overflow-y: scroll;
+  box-shadow: 2px 2px 40px rgb(196, 196, 196);
+}
+.library-song-container {
+  display: grid;
+  grid-template-columns: 35% auto;
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  .album-cover {
+    width: 100%;
+    border-radius: 5px;
+    grid-row: 1/4;
+    padding-right: 1rem;
+  }
+  .song-title {
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+  }
+  .song-artist {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  &:hover {
+    background-color: rgb(243, 231, 223);
+  }
+}
