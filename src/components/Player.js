@@ -5,11 +5,16 @@ import {
   faPlay,
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
-function Player({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) {
-  // Refs
-  const audioRef = useRef(null);
+function Player({
+  currentSong,
+  setCurrentSong,
+  audioRef,
+  isPlaying,
+  setIsPlaying,
+  songs,
+}) {
   //state
   const [songTime, setSongTime] = useState({
     duration: 0,
@@ -36,16 +41,39 @@ function Player({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) {
     audioRef.current.currentTime = e.target.value;
     setSongTime({ ...songTime, currentTime: e.target.value });
   }
-  const getTime = (time) => {
+  function skipTrackHandler(direction) {
+    let currentIndex = songs.indexOf(currentSong);
+    let nextIndex = currentIndex === songs.length - 1 ? 0 : currentIndex + 1;
+    let prevIndex = currentIndex === 0 ? songs.length - 1 : currentIndex - 1;
+    if (direction === "next-song") {
+      changeSong(currentSong, songs[nextIndex]);
+    } else {
+      changeSong(currentSong, songs[prevIndex]);
+    }
+  }
+  function changeSong(currentSong, song) {
+    currentSong.active = false;
+    song.active = true;
+    setCurrentSong(song);
+    song.active = true;
+    if (!audioRef.current.paused) {
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.then((audio) => {
+          audioRef.current.play();
+        });
+      }
+    }
+  }
+  const formatTime = (time) => {
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
   };
-  function nextSong() {}
   return (
     <div className="player-container">
       <div className="player-timer">
-        <p className="start-time">{getTime(songTime.currentTime)}</p>
+        <p className="start-time">{formatTime(songTime.currentTime)}</p>
         <input
           type="range"
           name="playing-time"
@@ -55,17 +83,25 @@ function Player({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) {
           max={songTime.duration}
           onInput={(e) => dragHandler(e)}
         />
-        <p className="end-time">{getTime(songTime.duration)}</p>
+        <p className="end-time">{formatTime(songTime.duration)}</p>
       </div>
       <div className="player-controller">
-        <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          size="2x"
+          onClick={() => skipTrackHandler("prev-song")}
+        />
         <FontAwesomeIcon
           icon={isPlaying ? faPause : faPlay}
           size="2x"
           id="btn-play"
           onClick={playSongHandler}
         />
-        <FontAwesomeIcon icon={faChevronRight} size="2x" />
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          size="2x"
+          onClick={() => skipTrackHandler("next-song")}
+        />
       </div>
       <audio
         src={currentSong.audio}
