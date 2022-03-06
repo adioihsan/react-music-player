@@ -6,7 +6,6 @@ import {
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-
 function Player({
   currentSong,
   setCurrentSong,
@@ -36,6 +35,7 @@ function Player({
   }
   function onSongLoaded() {
     setSongTime({ ...songTime, duration: audioRef.current.duration });
+    if (isPlaying) audioRef.current.play();
   }
   function dragHandler(e) {
     audioRef.current.currentTime = e.target.value;
@@ -56,15 +56,6 @@ function Player({
     currentSong.active = false;
     song.active = true;
     setCurrentSong(song);
-    song.active = true;
-    if (!audioRef.current.paused) {
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.then((audio) => {
-          audioRef.current.play();
-        });
-      }
-    }
   }
   const formatTime = (time) => {
     return (
@@ -109,6 +100,7 @@ function Player({
         ref={audioRef}
         onTimeUpdate={timeHanlder}
         onLoadedMetadata={onSongLoaded}
+        onEnded={() => skipTrackHandler("next-song")}
       ></audio>
     </div>
   );
