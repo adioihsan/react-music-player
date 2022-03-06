@@ -6,7 +6,8 @@
   gap: 2rem;
 }
 .player-timer {
-  width: 50%;
+  width: clamp(20rem, 90vw, 50rem);
+  justify-content: space-around;
   display: flex;
   gap: 1rem;
 
