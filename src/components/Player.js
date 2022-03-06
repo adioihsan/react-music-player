@@ -43,11 +43,12 @@ function Player({
   }
   function skipTrackHandler(direction) {
     let currentIndex = songs.indexOf(currentSong);
-    let nextIndex = currentIndex === songs.length - 1 ? 0 : currentIndex + 1;
+    let nextIndex = (currentIndex + 1) % songs.length; // you can achieve next index using modulus like this, or write it manualy :  currentIndex === songs.length - 1 ? 0 : currentIndex + 1;
     let prevIndex = currentIndex === 0 ? songs.length - 1 : currentIndex - 1;
     if (direction === "next-song") {
       changeSong(currentSong, songs[nextIndex]);
     } else {
+      // direction === "prev-song"
       changeSong(currentSong, songs[prevIndex]);
     }
   }
