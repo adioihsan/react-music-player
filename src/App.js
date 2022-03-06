@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 
 // import styles
 import "./styles/app.scss";
-import data from "./util";
+import data from "./data";
 function App() {
   // Refs
   const audioRef = useRef(null);
