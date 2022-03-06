@@ -20,7 +20,7 @@ function LibrarySong({ song, currentSong, setCurrentSong, audioRef }) {
   function playSong() {}
   return (
     <div
-      className={`library-song-container ${song.active ? "active" : " "}`}
+      className={`library-song-container ${song.active ? "active-song" : " "}`}
       ref={songContainerRef}
       onClick={songSelectHandler}
     >

@@ -10,6 +10,9 @@
   padding: 1rem 1rem;
   overflow-y: scroll;
   box-shadow: 2px 2px 40px rgb(196, 196, 196);
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  opacity: 0;
 }
 .library-song-container {
   display: grid;
@@ -38,6 +41,10 @@
     background-color: rgb(243, 231, 223);
   }
 }
-.active {
+.active-song {
   background-color: rgb(243, 231, 223);
+}
+.open-library {
+  transform: translateX(0%);
+  opacity: 1;
 }

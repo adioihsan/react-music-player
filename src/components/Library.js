@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import LibrarySong from "./LibrarySong";
-function Library({ songs, setCurrentSong, audioRef, currentSong }) {
-  const albumCoverRef = useRef(null);
+function Library({ songs, setCurrentSong, audioRef, currentSong, isLibOpen }) {
   return (
-    <div className="library-container">
+    <div className={`library-container ${isLibOpen ? "open-library" : ""}`}>
       {songs.map((song) => (
         <LibrarySong
           song={song}

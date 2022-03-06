@@ -1,0 +1,21 @@
+.top-nav {
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .btn-lib {
+    background-color: rgb(243, 231, 223);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    text-justify: distribute;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: snow;
+      box-shadow: 1px 1px 2px gray;
+    }
+  }
+}
